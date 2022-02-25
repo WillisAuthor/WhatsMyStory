@@ -20,6 +20,17 @@ var WTF = (function() {
     var responses;
 	var books;
     var headings;
+    
+    var adjective;
+    var loveinterest;
+    var setting;
+    var verbed;
+    var verbing;
+    var verb;
+    var locations;
+    var bodypart;
+    var author;
+    
     var corpus;
     var regex;
     var dom;
@@ -40,11 +51,31 @@ var WTF = (function() {
         responses = corpus.response;
         headings = corpus.heading;
 		books = corpus.books;
+        
+        adjective = corpus.adjective;
+        loveinterest = corpus.loveinterest;
+        setting = corpus.setting;
+        verbed =  corpus.verbed;
+        verbing = corpus.verbing;
+        verb = corpus.verb;
+        locations = corpus.locations;
+        bodypart = corpus.bodypart;
+        author = corpus.author;
 
         delete corpus.template;
         delete corpus.response;
         delete corpus.heading;
 		delete corpus.books;
+        
+        delete corpus.adjective;
+        delete corpus.loveinterest;
+        delete corpus.setting;
+        delete corpus.verbed;
+        delete corpus.verbing;
+        delete corpus.verb;
+        delete corpus.locations;
+        delete corpus.bodypart;
+        delete corpus.author;
 
         // Enable UI and generate first idea
 
