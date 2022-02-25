@@ -5,35 +5,34 @@ var WTF = (function() {
 
     /*
       ------------------------------------------------------------
-
         Constants & variables
-
       ------------------------------------------------------------
     */
 
     var RE_QUOTE = /\"([^\"]+)\"/gi;
     var RE_JSON = /\.json$/i;
+    var RE_COL = /^gsx\$(.+)$/i;
     var RE_KEY = /[a-z0-9_-]{32,}/i;
-    var DOCS_PATH = 'https://docs.google.com/spreadsheet/pub?key={key}&output=csv';
-
+    var DOCS_PATH = "https://spreadsheets.google.com/feeds/list/{key}/od6/public/values?alt=json";
+    
+    
     var templates;
     var responses;
-	var books;
     var headings;
-    
-    var adjective;
-    var loveinterest;
-    var setting;
-    var verbed;
-    var verbing;
-    var verb;
-    var locations;
-    var bodypart;
-    var author;
-    
     var corpus;
     var regex;
     var dom;
+
+//	  var books;    
+//    var adjective;
+//    var loveinterest;
+//    var setting;
+//    var verbed;
+//    var verbing;
+//    var verb;
+//    var locations;
+//    var bodypart;
+//    var author;
 
     /*
       ------------------------------------------------------------
@@ -50,52 +49,78 @@ var WTF = (function() {
         templates = corpus.template;
         responses = corpus.response;
         headings = corpus.heading;
-		books = corpus.books;
-        
-        adjective = corpus.adjective;
-        loveinterest = corpus.loveinterest;
-        setting = corpus.setting;
-        verbed =  corpus.verbed;
-        verbing = corpus.verbing;
-        verb = corpus.verb;
-        locations = corpus.locations;
-        bodypart = corpus.bodypart;
-        author = corpus.author;
-
+//		books = corpus.books;
+//        
+//        adjective = corpus.adjective;
+//        loveinterest = corpus.loveinterest;
+//        setting = corpus.setting;
+//        verbed =  corpus.verbed;
+//        verbing = corpus.verbing;
+//        verb = corpus.verb;
+//        locations = corpus.locations;
+//        bodypart = corpus.bodypart;
+//        author = corpus.author;
+//      
         delete corpus.template;
         delete corpus.response;
         delete corpus.heading;
-		delete corpus.books;
-        
-        delete corpus.adjective;
-        delete corpus.loveinterest;
-        delete corpus.setting;
-        delete corpus.verbed;
-        delete corpus.verbing;
-        delete corpus.verb;
-        delete corpus.locations;
-        delete corpus.bodypart;
-        delete corpus.author;
+//		delete corpus.books;
+//        
+//        delete corpus.adjective;
+//        delete corpus.loveinterest;
+//        delete corpus.setting;
+//        delete corpus.verbed;
+//        delete corpus.verbing;
+//        delete corpus.verb;
+//        delete corpus.locations;
+//        delete corpus.bodypart;
+//        delete corpus.author;
 
-        // Enable UI and generate first idea
+  // Enable UI and generate first idea
 
         initUI();
         buildRexExp();
         generate();
+        $('#templates').html(templates.length + ' template' + (templates.length == 1 ? '' : 's'))
+        $('#outcomes').html(getTotalNumOptions().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+    }
+
+    function getTotalNumOptions() {
+        var num = 0
+        for(var i = 0; i < templates.length; i++) {
+            num += getNumTemplateOptions(templates[i])
+        }
+        return num
+    }
+
+    function getNumTemplateOptions( template ) {
+        var type, iter = 0, // Safety mechanism
+            item = regex.exec( template ),
+            copy = cloneCorpus();
+
+        var num = 0
+        while ( item && ++iter < 1000 ) {
+            type = item[ 0 ].substr(1);
+            var typeNum = corpus[type].length
+            if(num == 0) {
+                num = corpus[type].length
+            }
+            else {
+                num = num * corpus[type].length
+            }
+            item = regex.exec( template );
+        }
+        return num
     }
 
     /*
       ------------------------------------------------------------
-
         Converts CSV to a regular corpus object
         @see sample.json
-
       ------------------------------------------------------------
     */
 
     function parseCSV( csv ) {
-
-        var corpus = {};
 
         var i, j, k, n, m, cols, keys = {}, data = {}, rows = csv.split( '\n' );
 
@@ -121,9 +146,45 @@ var WTF = (function() {
 
     /*
       ------------------------------------------------------------
+        Converts JSON data to a regular corpus object
+        @see sample.json
+      ------------------------------------------------------------
+    */
 
+    function parseJSON( json ) {
+
+        var i, n, key, val, map = {}, keys = {}, data = {}, rows = json.feed.entry;
+
+        for ( key in rows[0] ) {
+            
+            if ( RE_COL.test( key ) ) {
+                
+                map[ key ] = key.match( RE_COL )[ 1 ].toLowerCase();
+                keys[ key ] = [];
+            }
+        }
+
+        for ( key in keys ) {
+            
+            data[ map[ key ] ] = keys[ key ];
+
+            for ( i = 0, n = rows.length; i < n; i++ ) {
+
+                val = rows[ i ][ key ].$t;
+
+                if ( val && val.length ) {
+
+                    keys[ key ].push( val );
+                }
+            }
+        }
+
+        return data;
+    }
+
+    /*
+      ------------------------------------------------------------
         Binds event handlers to control the interface
-
       ------------------------------------------------------------
     */
 
@@ -144,9 +205,7 @@ var WTF = (function() {
 
     /*
       ------------------------------------------------------------
-
         Builds a regular expression for all types in the corpus
-
       ------------------------------------------------------------
     */
 
@@ -158,6 +217,13 @@ var WTF = (function() {
 
             types.push( type );
 
+        types = types.sort(function (a, b) {
+            if (a.length == b.length) {
+                return 0
+            }
+            return a.length > b.length ? -1 : 1
+        })
+        
         var content = '@(type)'.replace( 'type', types.join( '|' ) );
 
         regex = new RegExp( content, 'gi' );
@@ -165,9 +231,7 @@ var WTF = (function() {
 
     /*
       ------------------------------------------------------------
-
         Generates ideas based on the corpus
-
       ------------------------------------------------------------
     */
 
@@ -182,8 +246,6 @@ var WTF = (function() {
 
             type = item[ 0 ];
             text = item[ 1 ];
-
-            console.log( text, copy, copy[ text ] );
 
             part = randomItem( copy[ text ], true );
             idea = idea.replace( type, part );
@@ -243,18 +305,14 @@ var WTF = (function() {
 
     /*
       ------------------------------------------------------------
-
         Public API
-
       ------------------------------------------------------------
     */
 
     return {
 
         /*
-
             Expects one of the following:
-
                 1.  An object with `templates` and any amount of keys for word types, for example:
         
                     {
@@ -262,13 +320,10 @@ var WTF = (function() {
                         animal: [ 'dog', 'cat', 'rabbit' ],
                         color: [ 'red', 'green', 'blue' ],
                     }
-
                 2.  A path to a JSON file with the same structure as above (see `sample.json`)
-
                 3.  A Google spreadsheet key (e.g 0AvG1Hx204EyydF9ub1M2cVJ3Z1VGdDhTSWg0ZV9LNGc)
                     You must first publish the spreadsheet as a CSV 
                     @see https://support.google.com/drive/answer/37579?hl=en
-
         */
 
         init: function( data ) {
@@ -295,12 +350,12 @@ var WTF = (function() {
 
                 } else if ( RE_KEY.test( data ) ) {
 
-                    // CSV
+                    // JSON
 
                     $.ajax({
                         url: DOCS_PATH.replace( '{key}', data ),
                         success: function( data, status, xhr ) {
-                            corpus = parseCSV( data );
+                            corpus = parseJSON( data );
                             start();
                         },
                         error: function( xhr, errorType, error ) {
