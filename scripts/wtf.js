@@ -5,7 +5,9 @@ var WTF = (function() {
 
     /*
       ------------------------------------------------------------
+
         Constants & variables
+
       ------------------------------------------------------------
     */
 
@@ -14,25 +16,14 @@ var WTF = (function() {
     var RE_COL = /^gsx\$(.+)$/i;
     var RE_KEY = /[a-z0-9_-]{32,}/i;
     var DOCS_PATH = "https://spreadsheets.google.com/feeds/list/{key}/od6/public/values?alt=json";
-    
-    
+
+
     var templates;
     var responses;
     var headings;
     var corpus;
     var regex;
     var dom;
-
-//	  var books;    
-//    var adjective;
-//    var loveinterest;
-//    var setting;
-//    var verbed;
-//    var verbing;
-//    var verb;
-//    var locations;
-//    var bodypart;
-//    var author;
 
     /*
       ------------------------------------------------------------
@@ -49,34 +40,12 @@ var WTF = (function() {
         templates = corpus.template;
         responses = corpus.response;
         headings = corpus.heading;
-//		books = corpus.books;
-//        
-//        adjective = corpus.adjective;
-//        loveinterest = corpus.loveinterest;
-//        setting = corpus.setting;
-//        verbed =  corpus.verbed;
-//        verbing = corpus.verbing;
-//        verb = corpus.verb;
-//        locations = corpus.locations;
-//        bodypart = corpus.bodypart;
-//        author = corpus.author;
-//      
+
         delete corpus.template;
         delete corpus.response;
         delete corpus.heading;
-//		delete corpus.books;
-//        
-//        delete corpus.adjective;
-//        delete corpus.loveinterest;
-//        delete corpus.setting;
-//        delete corpus.verbed;
-//        delete corpus.verbing;
-//        delete corpus.verb;
-//        delete corpus.locations;
-//        delete corpus.bodypart;
-//        delete corpus.author;
 
-  // Enable UI and generate first idea
+        // Enable UI and generate first idea
 
         initUI();
         buildRexExp();
@@ -115,8 +84,10 @@ var WTF = (function() {
 
     /*
       ------------------------------------------------------------
+
         Converts CSV to a regular corpus object
         @see sample.json
+
       ------------------------------------------------------------
     */
 
@@ -146,8 +117,10 @@ var WTF = (function() {
 
     /*
       ------------------------------------------------------------
+
         Converts JSON data to a regular corpus object
         @see sample.json
+
       ------------------------------------------------------------
     */
 
@@ -184,7 +157,9 @@ var WTF = (function() {
 
     /*
       ------------------------------------------------------------
+
         Binds event handlers to control the interface
+
       ------------------------------------------------------------
     */
 
@@ -205,7 +180,9 @@ var WTF = (function() {
 
     /*
       ------------------------------------------------------------
+
         Builds a regular expression for all types in the corpus
+
       ------------------------------------------------------------
     */
 
@@ -231,7 +208,9 @@ var WTF = (function() {
 
     /*
       ------------------------------------------------------------
+
         Generates ideas based on the corpus
+
       ------------------------------------------------------------
     */
 
@@ -305,14 +284,18 @@ var WTF = (function() {
 
     /*
       ------------------------------------------------------------
+
         Public API
+
       ------------------------------------------------------------
     */
 
     return {
 
         /*
+
             Expects one of the following:
+
                 1.  An object with `templates` and any amount of keys for word types, for example:
         
                     {
@@ -320,10 +303,13 @@ var WTF = (function() {
                         animal: [ 'dog', 'cat', 'rabbit' ],
                         color: [ 'red', 'green', 'blue' ],
                     }
+
                 2.  A path to a JSON file with the same structure as above (see `sample.json`)
+
                 3.  A Google spreadsheet key (e.g 0AvG1Hx204EyydF9ub1M2cVJ3Z1VGdDhTSWg0ZV9LNGc)
                     You must first publish the spreadsheet as a CSV 
                     @see https://support.google.com/drive/answer/37579?hl=en
+
         */
 
         init: function( data ) {
