@@ -375,7 +375,7 @@ verbed: [
             
 ],
 		
-locations: [
+location: [
 			"closet",
 			"office",
 			"garage",
