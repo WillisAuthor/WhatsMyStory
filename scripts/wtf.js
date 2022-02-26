@@ -15,8 +15,7 @@ var WTF = (function() {
     var RE_JSON = /\.json$/i;
     var RE_COL = /^gsx\$(.+)$/i;
     var RE_KEY = /[a-z0-9_-]{32,}/i;
- //    var DOCS_PATH = "https://spreadsheets.google.com/feeds/list/{key}/od6/public/values?alt=json";
-    var DOCS_PATH = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR-vpMhRmASTY0RAud6t_WEWfHjsqCaBOL0JmklB2kEStUS5ChzDewI64ncJjaKOxeP6ufa0vFlNpkx/pub?gid=0&single=true&output=csv";
+    var DOCS_PATH = "https://spreadsheets.google.com/feeds/list/{key}/od6/public/values?alt=json";
 
 
     var templates;
