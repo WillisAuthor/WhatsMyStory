@@ -440,3 +440,11 @@ fluid: [
 // WTF.init( '1ETfPSeCQJoLRRkqQQ6b8P4hvVJ8UrXbuNFZ9SRUqOsA' );
 // WTF.init( '2PACX-1vR-vpMhRmASTY0RAud6t_WEWfHjsqCaBOL0JmklB2kEStUS5ChzDewI64ncJjaKOxeP6ufa0vFlNpkx' );
 });
+
+const reloadtButton = document.querySelector("#reload");
+// Reload everything:
+function reload() {
+    reload = location.reload();
+}
+// Event listeners for reload
+reloadButton.addEventListener("click", reload, false);
