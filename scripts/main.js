@@ -37,11 +37,15 @@ heading: [
 
 
 template: [
-			"@adjective @loveinterest @verbed and @verbed me!",
+			"The @adjective @loveinterest @verbed and @verbed me!",
 			"I was caught @verbing the @adjective @loveinterest in the @locations!",
 			"A @adjective @loveinterest @verbing their @bodypart on/in my @bodypart!",
 			"Author @author wrote a smutty erotica about me @verbing a @adjective @loveinterest! How cool!",
 			"Once upon a time, a @adjective @loveinterest was born with a @adjective @bodypart. When they saw you, they instantly knew you were the one! The one they would @verb for the rest of their life! The End!",
+            "Their @bodypart (s) had met in @noun, in @fluid, frantic to get under that thin film with a @bodypart or a @bodypart, as if they each could grip character there and during love pull it right off the body of the other.",
+            "I was hers. She was mine. My @bodypart was her @noun, and she @verbed it into the @location. Her @bodypart was my @noun, and I became the @location.",
+            "He was careful not to @verb her. She could feel how @adjective she felt to him. She could feel herself through him. Her @bodpart. The way her @bodypart existed only where he @verbed her. The rest of her was @noun.",
+            "And I mean to hear ye @verb like that again. And to @verb and @verb, even though you dinna wish to, for ye canna help it. I mean to make you @verb as though your @bodypart would break, and @verb with the wanting, and at last to cry out in my @bodypart, and I shall know that I’ve served ye well.",
 ],
 
 author: [
@@ -94,6 +98,8 @@ author: [
 				"gruff",
 				"headstrong",
 				"hot-headed",
+                "thirsty",
+                "hungry",
 				"lazy",
 				"loud",
 				"Machiavellian",
@@ -215,6 +221,7 @@ author: [
 				"modest",
 				"naked",
 				"sexy",
+        "soft",
 		"sultry",
 		"handsome",
 		"gorgeous",
@@ -288,6 +295,15 @@ verbed: [
 			"banged",
 			"fucked",
 			"bit",
+            "drove",
+            "loved",
+            "hurt",
+            "groaned",
+            "moaned",
+            "screamed",
+            "sighed",
+            "sobbed",
+            "begged",
 ],
 		
 		verbing: [
@@ -301,6 +317,15 @@ verbed: [
 			"banging",
 			"fucking",
 			"biting",
+            "driving",
+            "loving",
+            "hurting",
+            "groaning",
+            "moaning",
+            "screaming",
+            "sighing",
+            "sobbing",
+            "begging",
 ],
 		
 		   
@@ -315,6 +340,15 @@ verbed: [
 			"bang",
 			"fuck",
 			"bite",
+            "drive",
+            "love",
+            "hurt",
+            "groan",
+            "moan",
+            "scream",
+            "sigh",
+            "sob",
+            "beg",
 ],
 		
 				   
@@ -328,7 +362,19 @@ verbed: [
 			"pussy",
 			"cock",
 			"dick",
-			"devl doorbell",
+			"devil's doorbell",
+            "body",
+            "tooth",
+            "skin",
+            "hair",
+            "eyes",
+            "toes",
+            "nose",
+            "lips",
+            "pecs",
+            "arms",
+            "legs",
+            
 ],
 		
 locations: [
@@ -342,7 +388,47 @@ locations: [
 			"movie theater",
 			"classroom",
 			"teacher's office",
+            "sea",
+            "sun",
+            "bedroom",
+            "kitchen",
+            "bathroom",
+            "nightclub",
 		]
+noun: [
+    "perfume",
+    "dildo",
+    "vibrator",
+    "dog",
+    "cat",
+    "table",
+    "car",
+    "cup",
+    "glass",
+    "river",
+    "chariot",
+    "man",
+    "woman",
+    "bed",
+    "desk",
+    "chair",
+    "smoke",
+    "fire",
+    ]
+    
+fluid: [
+    "sweat",
+    "spit",
+    "wine",
+    "beer",
+    "water",
+    "saliva",
+    "juice",
+    "liquor",
+    "coffee",
+    "tea",
+    "milk",
+    ]    
  });
 
 // Populate using a JSON file
