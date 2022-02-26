@@ -16,7 +16,7 @@ heading: [
 			"I pulled a book off the shelf to read about...",
 			"This book is about you and that time when...",
 			"Ran into you Mom and guess what she did last night?",
-			"Fanning myself after I saw...",
+			"Fanning myself after I saw/heard...",
 ],
 response: [
 		  "I need a cold shower now.",
