@@ -15,7 +15,7 @@ heading: [
 			"This book I got, man, so the plot is...",
 			"I pulled a book off the shelf to read about...",
 			"This book is about you and that time when...",
-			"Ran into you Mom and guess what she did last night?",
+			"Ran into your Mom and guess what she did last night?",
 			"Fanning myself after I saw/heard...",
 ],
 response: [
