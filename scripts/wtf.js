@@ -16,7 +16,7 @@ var WTF = (function() {
     var RE_COL = /^gsx\$(.+)$/i;
     var RE_KEY = /[a-z0-9_-]{32,}/i;
     //var DOCS_PATH = "https://spreadsheets.google.com/feeds/list/{key}/od6/public/values?alt=json";
-    var DOCS_PATH = "https://docs.google.com/spreadsheets/d/{key}";
+    var DOCS_PATH = "https://docs.google.com/spreadsheets/d/{key}/export?gid=0&format=csv";
 
 
     var templates;
