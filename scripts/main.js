@@ -4,7 +4,6 @@ $(function() {
 // Populate using an object literal
 
 WTF.init({
-
 heading: [
 			"Let me tell you what happened last night...",
 			"Check this shit out,",
@@ -19,8 +18,7 @@ heading: [
 			"Ran into you Mom and guess what she did last night?",
 			"Fanning myself after I saw...",
 ],
-
-   response: [
+response: [
 		  "I need a cold shower now.",
 			"Get your mind out of the gutter!",
 			"Pardon me, I've got a hot flash coming on...",
@@ -394,7 +392,7 @@ locations: [
             "kitchen",
             "bathroom",
             "nightclub",
-		]
+		],
 noun: [
     "perfume",
     "dildo",
@@ -414,7 +412,7 @@ noun: [
     "chair",
     "smoke",
     "fire",
-    ]
+    ],
     
 fluid: [
     "sweat",
@@ -428,23 +426,8 @@ fluid: [
     "coffee",
     "tea",
     "milk",
-    ]    
+    ],
  });
 
-// Populate using a JSON file
-//WTF.init( 'sample.json' );
-
-// Populate using a Google spreadsheet ID (you must publish it first!)
-// @see https://support.google.com/drive/answer/37579?hl=en
-// WTF.init( '0AvG1Hx204EyydF9ub1M2cVJ3Z1VGdDhTSWg0ZV9LNGc' );
-// WTF.init( '1ETfPSeCQJoLRRkqQQ6b8P4hvVJ8UrXbuNFZ9SRUqOsA' );
-// WTF.init( '2PACX-1vR-vpMhRmASTY0RAud6t_WEWfHjsqCaBOL0JmklB2kEStUS5ChzDewI64ncJjaKOxeP6ufa0vFlNpkx' );
 });
 
-const reloadtButton = document.querySelector("#reload");
-// Reload everything:
-function reload() {
-    reload = location.reload();
-}
-// Event listeners for reload
-reloadButton.addEventListener("click", reload, false);
