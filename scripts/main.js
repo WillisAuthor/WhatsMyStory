@@ -42,7 +42,7 @@ template: [
 			"Once upon a time, a @adjective @loveinterest was born with a @adjective @bodypart. When they saw you, they instantly knew you were the one! The one they would @verb for the rest of their life! The End!",
             "Their @bodypart (s) had met in @noun, in @fluid, frantic to get under that thin film with a @bodypart or a @bodypart, as if they each could grip character there and during love pull it right off the body of the other.",
             "I was hers. She was mine. My @bodypart was her @noun, and she @verbed it into the @location. Her @bodypart was my @noun, and I became the @location.",
-            "He was careful not to @verb her. She could feel how @adjective she felt to him. She could feel herself through him. Her @bodpart. The way her @bodypart existed only where he @verbed her. The rest of her was @noun.",
+            "He was careful not to @verb her. She could feel how @adjective she felt to him. She could feel herself through him. Her @bodypart. The way her @bodypart existed only where he @verbed her. The rest of her was @noun.",
             "And I mean to hear ye @verb like that again. And to @verb and @verb, even though you dinna wish to, for ye canna help it. I mean to make you @verb as though your @bodypart would break, and @verb with the wanting, and at last to cry out in my @bodypart, and I shall know that I’ve served ye well.",
 ],
 
